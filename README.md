@@ -109,9 +109,8 @@ Tests the product functionality by navigating to the "Message Center" and schedu
 
 Additional Notes:-
 1. Implicit Wait is used to wait for elements to load.
-2. Thread.sleep() is used to add delays where necessary to allow the page to load fully.
-3. JavascriptExecutor is used to scroll into view and click on elements.
-4. Actions are used for simulating hover and navigating through product links.
+2. JavascriptExecutor is used to scroll into view and click on elements.
+3. Actions are used for simulating hover and navigating through product links.
 
 Browser Support
 This test is configured to run on the Chrome browser. Ensure that the appropriate version of ChromeDriver is installed.
