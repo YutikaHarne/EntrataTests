@@ -109,7 +109,7 @@ Tests the product functionality by navigating to the "Message Center" and schedu
 
 Additional Notes:-
 1. Implicit Wait is used to wait for elements to load.
-2. Thread.sleep() is used to add delays where necessary to allow the page to load fully.
+2. Assert is used to validating assumptions during code execution.
 3. JavascriptExecutor is used to scroll into view and click on elements.
 4. Actions are used for simulating hover and navigating through product links.
 
