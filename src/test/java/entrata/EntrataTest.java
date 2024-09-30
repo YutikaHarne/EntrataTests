@@ -34,32 +34,32 @@ public class EntrataTest {
 //	  Used maximize method to maximize the window
 	  driver.manage().window().maximize();
 	  System.out.println("Window Maximized");
+//	  Applied implicit wait for 3 seconds
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 //	  To accept the cookies
 	  driver.findElement(By.xpath("//a[@id='cookie-accept']")).click();
-	  Thread.sleep(5000);
 	  System.out.println("Cookie accepted");  
   }		
   
 @Test(priority=1,enabled=true)
 public void watchDemo() throws InterruptedException {
+//	  Applied implicit wait for 3 seconds
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 //	Check Watch demo button is clickable and opening next page or not
 	driver.findElement(By.xpath("//a[@href='https://go.entrata.com/watch-demo.html']")).click();
-	Thread.sleep(5000);
     System.out.println("button is clicked");	
     System.out.println("Test 1 is successfully executed");
 }
   
  @Test(priority=2, enabled=true)
   public void scheduleYourDemo() throws InterruptedException {
+//	  Applied implicit wait for 3 seconds
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 //	 get the main window
 	  String mainWindow = driver.getWindowHandle();	  
 	  System.out.println("Main Window Handle: " + mainWindow);
-//	  For delay of 3 Sec
-	  Thread.sleep(3000);
+
 	  driver.findElement(By.xpath("(//a[@href='https://go.entrata.com/schedule-demo.html'])[1]")).click();   // This should open new tab
-	  
-//	  Adding delay to let page get load
-	  Thread.sleep(3000);
 	  
 //    Get all window handles
       Set<String> allWindows = driver.getWindowHandles();
@@ -74,8 +74,9 @@ public void watchDemo() throws InterruptedException {
           }
 //    Now we can perform action on child window
       System.out.println("Title of the child tab: " + driver.getTitle());
-      Thread.sleep(2000);
-      
+     
+//	  Applied implicit wait for 3 seconds
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 //    Fill the form on child window
 //    Add First Name in form
       driver.findElement(By.xpath("//input[@id='FirstName']")).sendKeys("Yutika");
@@ -99,7 +100,7 @@ public void watchDemo() throws InterruptedException {
       Select s1 = new Select(iAm);
       s1.selectByIndex(1);
       
-      Thread.sleep(3000);
+      
 //    Switch back to the main window
       driver.switchTo().window(mainWindow);
       System.out.println("Switched back to the main tab with title: " + driver.getTitle());
@@ -109,21 +110,22 @@ public void watchDemo() throws InterruptedException {
  
   @Test(priority=3, enabled=true)
   public void registerNow() throws InterruptedException {
-	  Thread.sleep(3000);
+//	  Applied implicit wait for 3 seconds
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 //	  click on register now
 	  JavascriptExecutor js = (JavascriptExecutor) driver;
 	  WebElement registerNow = driver.findElement(By.cssSelector("a[href='https://basecamp.entrata.com/']"));
 	  js.executeScript("arguments[0].click();", registerNow);
-	  Thread.sleep(2000);
+	 
 //	  click on next page register now
 	  WebElement registerNow1 = driver.findElement(By.xpath("//a[@class='bc-nav-button w-button']"));
 	  js.executeScript("arguments[0].click();", registerNow1);
-	  Thread.sleep(2000);
+	  
 //	  Add first name in register form and to scroll to Firstname WebElement
       WebElement firstName = driver.findElement(By.xpath("//input[@aria-label='First name']"));
       js.executeScript("arguments[0].scrollIntoView(true);", firstName);
       firstName.sendKeys("Yutika");
-      
+//	  Applied implicit wait for 2 seconds
       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
 //    Add Last name in register form  
       driver.findElement(By.xpath("//input[@aria-label='Last name']")).sendKeys("Harne");
@@ -147,7 +149,8 @@ public void watchDemo() throws InterruptedException {
   
   @Test(priority=4, enabled=true)
   public void clickOnLogoToGoOnHomePage () throws InterruptedException {
-	  
+//	  Applied implicit wait for 3 seconds
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 //	  To click on Explore more
 	  driver.findElement(By.xpath("//div[text()='Explore More']")).click();
 //	  Click on Entrata logo to go on home page again
@@ -159,28 +162,30 @@ public void watchDemo() throws InterruptedException {
   
   @Test(priority=5, enabled=true)
   public void basecampJourney() throws InterruptedException {
-  	
+//	  Applied implicit wait for 3 seconds
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+	  
 //	  Click on register now and check Overview, Why Attend, Keynotes, Agenda, Pricing, FAQ's 
 //	  working as per functionality or not  
 	  driver.findElement(By.xpath("(//div[@class='position-relative'])[1]")).click();
-//	  Thread.sleep is added for delay and let page get load completely
+//	   is added for delay and let page get load completely
 //	  Click on Overview to check pages are scrolling correctly or not
 	  driver.findElement(By.xpath("(//div[text()='Overview'])[2]")).click();
-	  Thread.sleep(3000);
+	  
 //	  Click on Why Attend to check pages are scrolling correctly or not
 	  driver.findElement(By.xpath("(//div[text()='Why Attend'])[2]")).click();
-	  Thread.sleep(3000);
+	
 //	  Click on Keynotes to check pages are scrolling correctly or not
 	  driver.findElement(By.xpath("(//div[text()='Keynotes'])[2]")).click();
-	  Thread.sleep(3000);
+
 //	  Click on Agenda to check page is switching to agenda page or not
 	  driver.findElement(By.xpath("(//div[text()='Agenda'])[2]")).click();
 //	  To go back on Base Camp Journey Page
 	  driver.navigate().back();
-	  Thread.sleep(3000);
+	  
 //	  Click on Pricing to check pages are scrolling correctly or not
 	  driver.findElement(By.xpath("(//div[text()='Pricing'])[2]")).click();
-	  Thread.sleep(3000);
+	  
 //	  Click on FAQ's to check pages are scrolling correctly or not 
 	  driver.findElement(By.xpath("(//div[text()='FAQ'])[2]")).click();
 	  
@@ -193,13 +198,16 @@ public void watchDemo() throws InterruptedException {
 	  driver.findElement(By.xpath("//div[text()='See How it Works']")).click();
 //    To click on Watch now to check page is navigating to page having video
 	  driver.findElement(By.xpath("//a[@href='https://go.entrata.com/watch-tei-webinar.html']")).click();
-	  Thread.sleep(5000);
+	  
 	  
 	  System.out.println("Test 6 is successfully executed");
   }
   
   @Test(priority=7, enabled=true)
   public void product() throws InterruptedException {
+//	  Applied implicit wait for 3 seconds
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+	  
 //	  Click on Products
 	  WebElement products = driver.findElement(By.xpath("(//div[text()='Products'])[1]"));
       Actions act = new Actions(driver);
@@ -233,7 +241,7 @@ public void watchDemo() throws InterruptedException {
       s1.selectByIndex(1);
 //    To navigate to previous page
       driver.navigate().back();
-      Thread.sleep(4000);
+     
 //    Again to navigate to homepage  
       driver.navigate().back();
 
