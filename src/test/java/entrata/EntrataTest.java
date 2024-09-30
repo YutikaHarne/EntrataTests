@@ -46,8 +46,17 @@ public void watchDemo() throws InterruptedException {
 //	  Applied implicit wait for 3 seconds
 	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 //	Check Watch demo button is clickable and opening next page or not
-	driver.findElement(By.xpath("//a[@href='https://go.entrata.com/watch-demo.html']")).click();
+	WebElement watchDemo = driver.findElement(By.xpath("//a[@href='https://go.entrata.com/watch-demo.html']"));
+	watchDemo.click();
+	String Title = driver.getTitle();
+	System.out.println(Title);
     System.out.println("button is clicked");	
+    
+ // Add assertion to verify the page title after clicking the button
+    String expectedTitle = "Entrata | Optimize Property Management with One Platform";  
+    String actualTitle = driver.getTitle();
+    assert actualTitle.equals(expectedTitle) : "Page title mismatch! Expected: " + expectedTitle + ", but got: " + actualTitle;
+    
     System.out.println("Test 1 is successfully executed");
 }
   
